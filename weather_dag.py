@@ -82,7 +82,7 @@ with DAG('weather_dag',
         extract_weather_data = SimpleHttpOperator(
         task_id = 'extract_weather_data',
         http_conn_id = 'weathermap_api',
-        endpoint='/data/2.5/weather?q=Portland&APPID=yourapikeyopenweathermap',
+        endpoint='/data/2.5/weather?q=cityname&APPID=yourapikeyopenweathermap',
         method = 'GET',
         response_filter= lambda r: json.loads(r.text),
         log_response=True
