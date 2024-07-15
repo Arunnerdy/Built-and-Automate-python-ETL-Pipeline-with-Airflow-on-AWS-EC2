@@ -1,0 +1,22 @@
+Step 1: Create an EC2 instance on the AWS. And go to EC2 connect.
+Step 2: Execute the following commands one by one,
+        sudo apt update
+        sudo apt install python3-pip
+        sudo apt install python3.12-venv
+        python3 -m venv airflow_venv
+        sudo pip install pandas
+        sudo pip install s3fs
+        sudo pip install apache-airflow
+        airflow standalone (Note down the login id and password)
+Step 3: After that edit the inbound rules on EC2 and allow port 8080.
+Step 4: Copy IPv4 DNS of EC2 and paste it in the seperate tab and at last add :8080 to it.
+Step 5: It will redirect to login page of Apache Airflow. And enter the username and password.
+Step 6: Connect the EC2 instance and VScode by Remote SSH.
+Step 7: Create the python file name weather_dag to define the workflow and the ETL process.
+Step 8: Create a S3 bucket. And add the IAM role which contains the policy of AmazonEC2fullaccess and AmazonS3fullaccess.
+Step 9: And install AWS CLI on your EC2 instance by running the following commands on vscode terminal
+        sudo apt  install awscli
+        aws configure
+        aws sts get-session-token
+Step 10: Create a new Access key and secret access key and enter it on weather_dag and also token got from above command.
+Step 11: Now the weather reports are extracted from the openweathermap for given location and transform by using python and load into AWS S3 bucket. The whole process is automated using Airflow.
